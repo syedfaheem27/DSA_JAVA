@@ -96,4 +96,24 @@ public boolean hasDuplicateIII(int[] nums){
     return set.size()!=nums.length;
 }
 
+
+/*
+ * Method 4: Using a set and early return
+ * can prove to be slightly better than the previous method
+ * although both uses sets but here we will return as soon as a
+ * duplicate is found
+ */
+public boolean hasDuplicateIV(int[] nums){
+    Set<Number> set = new HashSet<>();
+
+    for(int n:nums){
+        if(set.contains(n))
+            return true;
+        set.add(n);
+    }
+
+    return false;
+}
+
+
  }

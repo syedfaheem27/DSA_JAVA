@@ -139,4 +139,58 @@ public class ProblemSet2 {
         return true;
     }
 
+
+
+    //Problem 2:Replace Elements with Greatest Element on Right Side
+
+    /*
+     * Method 2: Brute force approach
+     * TC O(N^2)
+     * SC O(1)
+     */
+
+     public int[] replaceElementsI(int[] arr){
+        if(arr.length==1)
+            return arr;
+
+        for(int i=0;i<arr.length-1;i++){
+            int greatestToRight=arr[i+1];
+
+            for(int j=i+1;j<arr.length;j++){
+                greatestToRight=Math.max(greatestToRight,arr[j]);
+            }
+
+            arr[i]=greatestToRight;
+        }
+        arr[arr.length-1]=-1;
+
+        return arr;
+
+     }
+
+
+
+
+    /*
+     * Method 1
+     * TC O(N)
+     * SC O(1)
+     * Although, not a good practice to tamper with the input
+     */
+
+     public int[] replaceElementsII(int[] arr) {
+        int greatestToRight=-1;
+        int temp;
+
+        for(int i=arr.length-1;i>=0;i--){
+            temp=arr[i];
+            arr[i]=greatestToRight;
+
+
+            greatestToRight=Math.max(greatestToRight,temp);
+        }
+
+        return arr;
+
+    }
 }

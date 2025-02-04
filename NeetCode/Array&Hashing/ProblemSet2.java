@@ -144,7 +144,7 @@ public class ProblemSet2 {
     //Problem 2:Replace Elements with Greatest Element on Right Side
 
     /*
-     * Method 2: Brute force approach
+     * Method 1: Brute force approach
      * TC O(N^2)
      * SC O(1)
      */
@@ -172,7 +172,7 @@ public class ProblemSet2 {
 
 
     /*
-     * Method 1
+     * Method 2
      * TC O(N)
      * SC O(1)
      * Although, not a good practice to tamper with the input
@@ -193,4 +193,64 @@ public class ProblemSet2 {
         return arr;
 
     }
+
+
+
+    //Problem 3: Length of last word
+    /*
+     * Restricting the search zone and making sure there are no spaces
+     * towards the start and the end in our search zone
+     *
+     * TC: O(N)
+     * SC: O(1)
+     */
+
+    public int lengthOfLastWordI(String s) {
+        int len=0;
+        int i=0;
+
+        while(i<s.length()-1&&s.charAt(i)==' ')
+            i++;
+
+        int j=s.length()-1;
+
+        while(j>=i && s.charAt(j)==' ')
+            j--;
+
+        for(;i<=j;i++){
+            if(s.charAt(i)==' '){
+                len=0;
+                continue;
+            }
+
+            len++;
+        }
+
+        return len;
+
+    }
+
+    //We can split the string into an array on one or more than one white spaces
+    //using a regular expression and return the last element of the array
+
+
+    /*
+     * Method 2: A better approach
+     * TC O(N)
+     * SC O(1)
+     */
+    public int lengthOfLastWordII(String s) {
+        int i=s.length()-1;
+        while(i>=0 && s.charAt(i)==' ')
+            i--;
+
+        int len=0;
+        while(s.charAt(i)!=' ')
+            len++;
+
+        return len;
+
+    }
+
+
 }

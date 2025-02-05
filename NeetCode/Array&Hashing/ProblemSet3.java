@@ -10,7 +10,28 @@ public class ProblemSet3 {
      * TC O(N^2)
      * SC O(1)
      */
-    public int[] twoSum(int[] nums,int sum){
+    public int[] twoSumI(int[] nums,int sum){
+        for(int i=0;i<nums.length;i++){
+            int tempSum=sum-nums[i];
+
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[j]==tempSum){
+                int[] arr={i,j};
+                return arr;
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+/*
+ * Method 2: Optimal approach
+ * TC O(N)
+ * SC O(N)
+ */
+    public int[] twoSumII(int[] nums,int sum){
         Map<Integer,Integer> map=new HashMap<>();
 
         for(int i=0;i<nums.length;i++){

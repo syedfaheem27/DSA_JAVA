@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,5 +49,52 @@ public class ProblemSet3 {
         return null;
     }
 
+
+
+    //Problem 2: Longest common prefix
+
+    /*
+     * Method 1: Brute force
+     * TC: O(nlogn + n * k) where k is the length of the smallest word in the array
+     * SC: O(2k) for stringbuilder and character array and O(logn) which is the auxillary space for tim sort in java
+     * SC: O(k + logn)
+     */
+
+     public String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs,(a,b)->{
+            int len1=a.length();
+            int len2=b.length();
+
+            if(len1>len2)
+                return 1;
+            else
+                return -1;
+        });
+
+        char[] result=strs[0].toCharArray();
+
+        for(int i=1;i<strs.length;i++){
+            String s=strs[i];
+
+            for(int j=0;j<s.length() && j<result.length;j++){
+                if(s.charAt(j)!=result[j]){
+                    result[j]=' ';
+                    break;
+                }
+            }
+        }
+
+        StringBuilder res=new StringBuilder();
+
+        int i=0;
+        while(i<result.length && result[i]!=' '){
+            res.append(result[i]);
+            i++;
+        }
+
+        return res.toString();
+
+
+     }
 
 }

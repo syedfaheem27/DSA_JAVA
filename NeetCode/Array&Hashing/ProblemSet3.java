@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProblemSet3 {
@@ -170,4 +173,43 @@ public class ProblemSet3 {
 
             return str;
        }
+
+//TODO: Add vertical scanning approach for longest common prefix and understand vertical and horizontal scanning
+
+
+
+        //Problem 3: Group anagrams
+
+        //TODO: Add brute force approach
+
+        /*
+         * Method 1:
+         * TC: O(n*mlogm) where m is the average length of a word in the array
+         * SC: O(n)
+         */
+       public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String,List<String>> map=new HashMap<>();
+
+        for(int i=0;i<strs.length;i++){
+            String s=strs[i];
+            char[] charArr=s.toCharArray();
+
+            Arrays.sort(charArr);
+            String temp=Arrays.toString(charArr);
+
+            if(!map.containsKey(temp)){
+                List<String> ls=new ArrayList<>();
+                ls.add(s);
+                map.put(temp,ls);
+            }else{
+                List<String> ls=map.get(temp);
+                ls.add(s);
+                map.put(temp, ls);
+            }
+        }
+
+        List<List<String>> ls=new ArrayList<>(map.values());
+        return ls;
+
+    }
 }

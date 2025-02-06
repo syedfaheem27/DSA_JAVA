@@ -101,7 +101,9 @@ public class ProblemSet3 {
      /*
       * Method 2: A better one from the previous one
       * TC O(N*M) where M is the length of the smallest word
-      * SC O(M)
+      * SC O(K) where K is the length of the first word in the array
+      * The algo can't take more space than the length of the smallest word
+      * so we can also say that the SC is constant
       */
 
       public String longestCommonPrefixII(String[] strs) {
@@ -141,4 +143,31 @@ public class ProblemSet3 {
 
       }
 
+
+      /*
+       * Method 3: A better one than the previous one
+       * Although TC is same but it has an early return on finding an empty string and it iterates only once
+       * TC: O(N * M) where M is the length of the shortest word
+       * SC: O(M)
+       */
+
+       public String longestCommonPrefixIII(String[] strs){
+        String str=strs[0];
+
+        for(int i=1;i<strs.length;i++){
+            String s=strs[i];
+
+            int j=0;
+
+            while(j<str.length() && j<s.length() && s.charAt(j)==str.charAt(j)){
+                j++;
+            }
+
+            str=str.substring(0, j);
+            if(str.length()==0)
+                return str;
+        }
+
+            return str;
+       }
 }

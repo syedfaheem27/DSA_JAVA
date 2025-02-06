@@ -60,7 +60,7 @@ public class ProblemSet3 {
      * SC: O(k + logn)
      */
 
-     public String longestCommonPrefix(String[] strs) {
+     public String longestCommonPrefixI(String[] strs) {
         Arrays.sort(strs,(a,b)->{
             int len1=a.length();
             int len2=b.length();
@@ -96,5 +96,49 @@ public class ProblemSet3 {
 
 
      }
+
+
+     /*
+      * Method 2: A better one from the previous one
+      * TC O(N*M) where M is the length of the smallest word
+      * SC O(M)
+      */
+
+      public String longestCommonPrefixII(String[] strs) {
+        String smallestStr="";
+
+        //N operations
+        for(int i=0;i<strs.length;i++){
+            if(smallestStr.length() > strs[i].length()){
+                smallestStr=strs[i];
+            }
+        }
+
+        char[] charArr=smallestStr.toCharArray();
+
+        //N * M where M is the length of the smallest word
+        for(int i=0;i<strs.length;i++){
+            String s=strs[i];
+
+            for(int j=0;j<s.length() && j<charArr.length;j++){
+                if(s.charAt(j)!=charArr[j]){
+                    charArr[j]=' ';
+                    break;
+                }
+            }
+        }
+
+        int i=0;
+        String result="";
+
+        //M operations
+        while(i<charArr.length && charArr[i]!=' '){
+            result+=charArr[i];
+            i++;
+        }
+
+        return result;
+
+      }
 
 }

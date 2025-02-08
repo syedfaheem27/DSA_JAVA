@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProblemSet4 {
     //Problem 1: Is Subsequence
 
@@ -58,4 +61,43 @@ public class ProblemSet4 {
 
         return s_pointer==s.length();
     }
+
+
+
+    //Problem 2: Pascals triangle
+    /*
+     * Method 1:
+     * TC: O(n^2)
+     * The outer loop runs for n times
+     * The inner loop runs for 0+1+2+...+n-1 times which is n(n-1)/2 which is O(n^2)
+     * Thus the time complexity is quadratic
+     * SC: O(1) if we exclude the List of Integer lists that we need to return
+     */
+     public List<List<Integer>> generatePascalsTriangleI(int numRows) {
+        List<List<Integer>> result=new ArrayList<>();
+
+        for(int i=0;i<numRows;i++){
+            List<Integer> ls=new ArrayList<>();
+            ls.add(1);
+
+            if(i-1>=0){
+                for(int j=1;j<result.get(i-1).size();j++){
+                    List<Integer> temp=result.get(i-1);
+                    Integer num=temp.get(j) + temp.get(j-1);
+
+                    ls.add(num);
+                }
+            }
+
+            if(i>=1){
+                ls.add(1);
+            }
+
+            result.add(ls);
+        }
+
+        return result;
+    }
+
+
 }

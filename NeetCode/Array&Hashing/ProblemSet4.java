@@ -100,4 +100,39 @@ public class ProblemSet4 {
     }
 
 
+
+
+    //Problem 3: Remove element
+
+    /*
+     * Method 1: Brute force approach
+     * TC: O(N^2)
+     * SC:O(1)
+     */
+
+     public int removeElementI(int[] nums, int val) {
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==val){
+                for(int j=i+1;j<nums.length;j++){
+                    if(nums[i]!=val){
+                        int temp=nums[i];
+                        nums[i]=nums[j];
+                        nums[j]=temp;
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==val){
+                return i+1;
+            }
+        }
+
+        return nums.length;
+
+     }
+
 }

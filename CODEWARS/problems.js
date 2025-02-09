@@ -54,4 +54,7 @@ function squareSumsUsingForLoop(numbers) {
   return sum;
 }
 
-console.log(squareSumsUsingForLoop([1, 2, 2]));
+// and yeah i could hav e just done this too
+const squareSumx = (numbers) => numbers.reduce((sum, n) => sum + n * n, 0);
+
+// console.log(squareSumx([1, 2, 2]));

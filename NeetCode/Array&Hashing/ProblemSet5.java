@@ -34,7 +34,7 @@ public class ProblemSet5 {
     }
 
     /*
-     * Method 2: Can't say it's a better approach
+     * Method 2: Dutch national flag algorithm - using a single pass
      * TC: O(N)
      * SC: O(1)
      */

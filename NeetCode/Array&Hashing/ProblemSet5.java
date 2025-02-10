@@ -32,4 +32,29 @@ public class ProblemSet5 {
         }
 
     }
+
+    /*
+     * Method 2: Can't say it's a better approach
+     * TC: O(N)
+     * SC: O(1)
+     */
+    public void sortColorsII(int[] nums) {
+        int left=0;
+        int mid=0;
+        int right=nums.length-1;
+
+        while(mid<=right){
+            if(nums[mid]==0){
+                nums[mid]=nums[left];
+                nums[left]=0;
+                mid++;
+                left++;
+            }else if(nums[mid]==2){
+                nums[mid]=nums[right];
+                nums[right]=2;
+                right--;
+            }else mid++;
+        }
+    }
+
 }

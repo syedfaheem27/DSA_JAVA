@@ -61,45 +61,43 @@ public class ProblemSet5 {
     }
 
 
-//     //Problem 2: Isomorphic strings
+    //Problem 2: Maximu score after splitting a string
 
-//     /*
-//      * Method 1: Using a map. Basically, mapping characters in s to the characters in t
-//      * If map contains the character in the map and the value is not equal to the respective
-//      * t character. It means they are not isomorhic
-//      */
+    /*
+     * Method 1: We can say that it's a dynamic sliding window or also prefix sum kind of
+     * TC: O(n)
+     * SC: O(1)
+     */
+    public int maxScoreI(String s) {
+        int zero_char=0;
+        int one_char=0;
 
-//      public boolean isIsomorphic(String s, String t) {
-//      if(s.length()!=t.length())
-//         return false;
+        int max_score=-1;
 
-//      Map<Character,Character> map = new HashMap<>();
+        //counting total ones
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='1')
+                one_char++;
 
-//      for(int i=0;i<s.length();i++){
-//         if(map.containsKey(s.charAt(i))){
-//             char val=map.get(s.charAt(i));
+        }
 
-//             if(val!=t.charAt(i))
-//                 return false;
+        //making the window bigger from left side and counting the number of zeroes
+        //while also keeping count of the total number of ones in the right window.
+        //Also, since you want to have 2 non empty strings always, we can only go till n-1
+        for(int i=0;i<s.length()-1;i++){
+            if(s.charAt(i)=='0')
+                zero_char++;
+            if(s.charAt(i)=='1')
+                one_char--;
 
+            max_score=Math.max(max_score,zero_char+one_char);
+        }
 
-//         }else if(map.containsKey(t.charAt(i))){
-//             char val=map.get(t.charAt(i));
+        return max_score;
 
-//             if(val!=s.charAt(i))
-//                 return false;
+    }
 
-
-//         }else {
-//             map.put(s.charAt(i), t.charAt(i));
-//         }
-//      }
-//      return true;
-// }
-
-
-
-//Problem 3: Unique email addresses
+    //Problem 3: Unique email addresses
 
 /*
  * Method 1: Brute force

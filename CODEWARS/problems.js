@@ -123,4 +123,24 @@ var min = function (list) {
 
 const max2 = (list) => Math.max(...list);
 
-console.log(min([0, 5, -1, 3, 4, 2, 5, 6, 7, 57, 3, 32]));
+// console.log(min([0, 5, -1, 3, 4, 2, 5, 6, 7, 57, 3, 32]));
+
+// #6. Create a function that accepts a string and a single character, and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+
+// If no occurrences can be found, a count of 0 should be returned.
+
+// ("Hello", 'o')  =>  1
+// ("Hello", 'l')  =>  2
+// ("", 'z')       =>  0
+
+function strCount(str, letter) {
+  let strCount = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == letter) {
+      strCount++;
+    }
+  }
+  return strCount;
+}
+
+// console.log(strCount2("hello", "h"));

@@ -144,3 +144,21 @@ function strCount(str, letter) {
 }
 
 // console.log(strCount2("hello", "h"));
+
+// #7. Return the number (count) of vowels in the given string.
+
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+// The input string will only consist of lower case letters and/or spaces.
+
+const vowelCount = (str) => {
+  let vowelCount = 0;
+  let vowels = ["a", "e", "i", "o", "u"];
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i].toLowerCase())) {
+      vowelCount++;
+    }
+  }
+  return vowelCount;
+};
+
+console.log(vowelCount("hellO"));

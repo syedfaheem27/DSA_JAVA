@@ -1,6 +1,4 @@
-package monotonicArray;
-
-import java.util.Arrays;
+package NeetCode.ArrayHashing.monotonicArray;
 
 public class main {
     public static void main(String[] args) {

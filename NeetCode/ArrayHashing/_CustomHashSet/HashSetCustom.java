@@ -1,3 +1,4 @@
+package _CustomHashSet;
  //Brute Force
  // 0>=key<=10^6
 

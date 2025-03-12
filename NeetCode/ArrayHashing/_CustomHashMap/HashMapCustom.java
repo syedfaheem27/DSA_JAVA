@@ -1,3 +1,4 @@
+package _CustomHashMap;
 //Brute force approach
 public class HashMapCustom {
     private int n=1000000;

@@ -1,4 +1,4 @@
-package NeetCode.ArrayHashing.Naming_A_Company;
+package _NamingACompany;
 
 import java.util.HashMap;
 import java.util.HashSet;

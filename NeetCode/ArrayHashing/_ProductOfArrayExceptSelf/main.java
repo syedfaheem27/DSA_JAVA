@@ -1,4 +1,5 @@
-package NeetCode.ArrayHashing.product_of_array_except_self;
+package _ProductOfArrayExceptSelf;
+
 
 import java.util.Arrays;
 

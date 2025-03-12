@@ -1,4 +1,4 @@
-package NeetCode.ArrayHashing.monotonicArray;
+package _MonotonicArray;
 
 public class main {
     public static void main(String[] args) {

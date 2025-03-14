@@ -1,7 +1,9 @@
 package _NamingACompany;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,9 +12,9 @@ public class main{
 
     //Brute force approach
 
-    //Time complexity : TC O(N^2)
+    //Time complexity : TC O(N^2) * m where m is the average length of the word
     //Space Complexity : SC O(N^2)
-    public long distinctNames(String[] ideas) {
+    public long distinctNamesBrute(String[] ideas) {
        Map<String,Boolean> map=new HashMap<>();
        Set<String> set =new HashSet<>();
 
@@ -52,6 +54,63 @@ public class main{
 
 
        return set.size();
+   }
+
+
+
+   //TC: O(N^2)
+   //SC: O(N)
+   public long distinctNamesOptimal(String[] ideas) {
+        Map<Character,Set<String>> map =new HashMap<>(); //n
+
+    //n
+        for(String idea : ideas){
+            Character ch=idea.charAt(0);
+            String rest=idea.substring(1);
+
+            if(map.containsKey(ch)){
+                Set<String> set=map.get(ch);
+
+                set.add(rest);
+            }else{
+                Set<String> set=new HashSet<>();
+                set.add(rest);
+
+                map.put(ch, set);
+            }
+        }
+
+        long totalNames=0;
+
+        //n
+        List<Map.Entry<Character,Set<String>>> newEntries=new ArrayList<>(map.entrySet()); //n
+
+        //n^2 in worst case
+        for(int i=0;i<newEntries.size();i++){
+            Set<String> setA = newEntries.get(i).getValue();
+
+            for(int j=i+1;j<newEntries.size();j++){
+                Set<String> setB=newEntries.get(j).getValue();
+
+                int notUnique=0;
+
+                //in worst case, every set would be of size 1
+                for(String idea: setA){
+                    if(setB.contains(idea)){
+                        notUnique++;
+                    }
+                }
+
+                int validIdeasI=setA.size()-notUnique;
+                int validIdeasII=setB.size()-notUnique;
+
+                totalNames+=(long)(validIdeasI*validIdeasII*2);
+            }
+
+        }
+
+        return totalNames;
+
    }
 
 }

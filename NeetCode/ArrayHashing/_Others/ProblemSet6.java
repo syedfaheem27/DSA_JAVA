@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class ProblemSet6 {
     //TC O(N)
-    //SC O(N) //see if you everything can be done using a single map
+    //SC O(N)
+
+
+    //TODO: see if you everything can be done using a single map
+    //TODO: Brute force implementation
     public boolean wordPatternI(String pattern,String s){
         String[] arr=s.split(" ");
 

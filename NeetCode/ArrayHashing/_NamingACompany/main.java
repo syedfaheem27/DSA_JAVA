@@ -58,7 +58,8 @@ public class main{
 
 
 
-   //TC: O(N^2)
+   //Total time: n(for map) + 26^2*m where m is the average number of words starting with a letter
+   //TC: O(n+26^2*m) ~ O(K), that is linear time complexity
    //SC: O(N)
    public long distinctNamesOptimal(String[] ideas) {
         Map<Character,Set<String>> map =new HashMap<>(); //n
@@ -85,7 +86,7 @@ public class main{
         //n
         List<Map.Entry<Character,Set<String>>> newEntries=new ArrayList<>(map.entrySet()); //n
 
-        //n^2 in worst case
+        //26^2*m in worst case
         for(int i=0;i<newEntries.size();i++){
             Set<String> setA = newEntries.get(i).getValue();
 

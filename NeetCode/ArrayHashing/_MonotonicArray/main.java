@@ -1,9 +1,6 @@
 package _MonotonicArray;
 
 public class main {
-    public static void main(String[] args) {
-
-    }
 
     /*
      * Method 1: Monotonic array

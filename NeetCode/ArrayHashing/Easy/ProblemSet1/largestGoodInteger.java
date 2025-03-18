@@ -55,10 +55,71 @@ public class largestGoodInteger {
             if(isValid){
                 max=Math.max(max, Integer.parseInt(substring));
                 i+=3;
+            }else{
+                i++;
             }
         }
 
 
         return max==-1?"":max==0?"000":""+max;
+    }
+
+
+    //A better one than the previous one because we are not creating substrings unnecessarily
+    public static String largestGoodIntegerOptimalII(String num){
+        int max=-1;
+
+        int n=num.length();
+
+        int i=0;
+
+
+        while(i<n-2){
+            boolean isValid=true;
+            for(int j=i+1;j<i+3 && j<n;j++){
+                if(num.charAt(j)!=num.charAt(j-1)){
+                        isValid=false;
+                        break;
+                }
+            }
+
+            if(isValid){
+                String substr=num.substring(i, i+3);
+                max=Math.max(max, Integer.parseInt(substr));
+                i+=3;
+            }else{
+                i++;
+            }
+        }
+
+        return max==-1?"":max==0?"000":""+max;
+
+    }
+
+
+    //No need to extract substrings because if we found a valid sub-string, all the chars are the same
+    public static String largestGoodIntegerOptimalIII(String num){
+        int max=-1;
+
+        int n=num.length();
+
+        int i=0;
+
+
+        while(i<n-2){
+            if(i<n-2 && num.charAt(i)==num.charAt(i+1) && num.charAt(i+1)==num.charAt(i+2)){
+                int val=(num.charAt(i)-'0')*111;
+
+                max=Math.max(max, val);
+                i+=3;
+            }else{
+                i++;
+            }
+
+
+        }
+
+        return max==-1? "" : max==0 ? "000" : "" + max;
+
     }
 }

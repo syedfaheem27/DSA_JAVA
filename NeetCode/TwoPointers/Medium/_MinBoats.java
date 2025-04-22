@@ -3,7 +3,7 @@ package NeetCode.TwoPointers.Medium;
 import java.util.Arrays;
 
 
-//Approach 1: Sort and use two pointers
+//Approach 1: Sort and use two pointers : Greedy approach: Trying to get close to the limit as much as possible
 //TC: O(nlogn)
 //SC: O(1)
 //TODO: Do with brute force
@@ -50,4 +50,7 @@ public class _MinBoats {
 
         return minBoats;
     }
+
+
+
 }

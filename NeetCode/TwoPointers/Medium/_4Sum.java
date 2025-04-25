@@ -6,6 +6,8 @@ import java.util.List;
 
 
 //Backtracking
+//TC: O(n^3)
+//SC: O()
 
 public class _4Sum {
     public static List<List<Integer>> forSum(int[] nums,int target){

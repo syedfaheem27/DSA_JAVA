@@ -4,7 +4,13 @@ public class BestTimeToBuyAndSellStock {
     //TC:O(N)
     //SC:O(1)
 
-    //TODO: Figure out why is it listed in sliding window when it's just a single pointer problem
+    //TODO: Why is it listed in sliding window if it is solvable using a simple iteration
+
+    //You can think of it as a dynamic sliding window problem because the first pointer can be the costPrice one
+    //and this pointer shifts when we find a lesser cp.
+
+
+
     public static int maxProfit(int[] prices) {
         int maxProfit = 0;
         int cp = 100000;

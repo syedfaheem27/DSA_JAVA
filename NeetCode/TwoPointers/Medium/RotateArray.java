@@ -30,5 +30,32 @@ public class RotateArray {
         }
     }
 
-    // public static
+    //Optimal
+    //TC:O(N)
+    //SC:O(1)
+    public static void rotateArray(int[] nums,int k){
+        int n = nums.length;
+         k = k % n;
+
+        for(int i=0,j=n-k-1,l=n-k,m=n-1;i<j || l<m; i++,j--,l++,m--){
+            if(i<j){
+                int temp1 = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp1;
+            }
+
+            if(l<m){
+                int temp2 = nums[l];
+                nums[l] = nums[m];
+                nums[m] = temp2;
+            }
+        }
+
+        for(int i=0,j=n-1;i<j;i++,j--){
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+
+    }
 }

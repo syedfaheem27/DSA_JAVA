@@ -17,27 +17,12 @@ public class DailyTemperatures {
         Arrays.fill(result, 0);
 
        for(int i=0;i<n;i++){
-        if(stack.isEmpty()){
-            stack.push(i);
-            continue;
+        while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]){
+            int idx = stack.pop();
+            result[idx]=i-idx;
         }
-
-        int topIdx = stack.peek();
-        int prevHighestTemp = temperatures[topIdx];
-
-        if(prevHighestTemp > temperatures[i]){
-            stack.push(i);
-        }else{
-            while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]){
-                int idx = stack.pop();
-                result[idx]=i-idx;
-            }
-            stack.push(i);
-        }
+        stack.push(i);
        }
-
-
-
 
 
        return result;
